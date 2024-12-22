@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invoicify</title>
+  <!-- Link CSS -->
+  <link rel="stylesheet" href="style.css">
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/b00ced0a70.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+  <!-- Heading Section -->
+  <header class="w-4/5 mx-auto">
+    <h1 class="text-5xl text-center text-cyan-700 mt-8">Invoicify<i class="fa-solid fa-receipt ml-5"></i></h1>
+  </header>
+  <!-- Input Field -->
+  <main class="w-4/5 mx-auto">
+    <div class="grid lg:grid-cols-2 sm:grid-cols-1 lg:gap-4 sm:gap-2">
+      <div class="w-full">
+        <img id='img' class="" src="img.png" alt="">
+        <div id='inn' class='hidden flex w-3/4 mx-auto flex-col justify-center rounded-lg shadow-lg p-5 m-4  '>
+          <p class='text-center my-4 text-lg font-bold'>Invoice</p>
+          <hr />
+          <div class=''>
+            <p class='text-center'>Income</p>
+            <hr />
+            <div class='flex justify-between items-center font-bold'>
+              <p>Income</p>
+              <p id='income-invoice'>00.0</p>
+            </div>
+            <div class='mb-4'>
+              <p class='text-center'>Expence</p>
+              <hr />
+            </div>
+            <div class='flex justify-between items-center'>
+              <p>Food</p>
+              <p id='food-invoice'>00.0</p>
+            </div>
+            <div class='flex justify-between items-center'>
+              <p>Rent</p>
+              <p id='rent-invoice'>00.0</p>
+            </div>
+            <div class='flex justify-between items-center'>
+              <p>Clothes</p>
+              <p id='cloth-invoice'>00.0</p>
+            </div>
+            <hr />
+            <div class='flex justify-between items-center mb-4 font-bold'>
+              <p>Total Expence</p>
+              <p id='total-invoice'>00.0</p>
+            </div>
+            <div class='flex justify-between items-center'>
+              <p>Balance</p>
+              <p id='balance-invoice'>00.0</p>
+            </div>
+            <hr />
+            <div class='flex justify-between items-center my-4 text-teal-600 font-bold'>
+              <p class=''>Save (%)</p>
+              <p id='save-invoice'>00.0</p>
+            </div>
+            <hr />
+            <div class='flex justify-between items-center '>
+              <p>Saving Amount</p>
+              <p id='save-amount-invoice'>00.0</p>
+            </div>
+            <hr />
+            <div class='flex justify-between items-center font-bold'>
+              <p>Remaining Balance</p>
+              <p id='remaining-balance-invoice'>00.0</p>
+            </div>
+            <hr />
+          </div>
+        </div>
+      </div>
+      <div class="w-full  bg-slate-50 p-5 flex flex-col m-4 rounded-lg shadow-lg justify-center">
+        <div>
+          <h1 class="my-4 text-3xl text-center">Income</h1>
+        </div>
+        <div class="flex lg:justify-between w-3/6 lg:mx-auto ">
+          <h3 class="flex flex-col justify-center items-center mx-2 ">Income: </h3>
+          <input type="text" class="bg-slate-200 p-2 rounded" name="" placeholder="Enter your amount" id="income-field">
+        </div>
+        <div class="mt-4">
+          <h1 class=" text-3xl text-center mx-2">Expense</h1>
+        </div>
+        <div class="flex justify-between mt-4 lg:w-3/6 lg:mx-auto sm:w-2/5">
+          <h3 class="flex justify-center items-center mx-2">Food: </h3>
+          <input type="text" class="bg-slate-200 p-2 rounded ml-6" name="" placeholder="Enter amount" id="food-field">
+        </div>
+        <div class="flex justify-between mt-4 lg:w-3/6 lg:mx-auto sm:w-2/5">
+          <h3 class="flex justify-center items-center mx-2">Rent: </h3>
+          <input type="text" class="bg-slate-200 p-2 rounded ml-6" name="" placeholder="Enter amount" id="rent-field">
+        </div>
+        <div class="flex justify-between mt-4 lg:w-3/6 lg:mx-auto sm:w-2/5">
+          <h3 class="flex justify-center items-center mx-2">Clothes: </h3>
+          <input type="text" class="bg-slate-200 p-2 rounded " name="" placeholder="Enter amount" id="cloth-field">
+        </div>
+        <div class="flex justify-center">
+          <button id="calculate-btn"
+            class="bg-cyan-500 text-white hover:bg-cyan-600 rounded-lg shadow-lg mt-4 lg:px-4 lg:py-2 lg:ml-5 sm:px-4 sm:py-3">Calculate</button>
+        </div>
+        <div class="text-center">
+          <h2 class="mt-4 text-lg">Total Expenses: <span id="total-expense" class="font-bold">00</span></h2>
+        </div>
+        <div class="text-center">
+          <h2 class="mt-4 text-lg">Balance: <span id="balance" class="font-bold">00</span></h2>
+        </div>
+        <div class="flex mt-2 lg:w-3/4 lg:mx-auto">
+          <div class="flex justify-around">
+            <h3 class="flex justify-center items-center">Save: </h3>
+            <input type="text" class="bg-slate-200 p-2 rounded w-2/4 " name="" placeholder="" id="save-field">
+          </div>
+
+          <i class="fa-solid fa-percent flex justify-center items-center mt-0 sm:mt-4"></i>
+          <button id="save-btn"
+            class="bg-cyan-500 text-white hover:bg-cyan-600 rounded-lg shadow-lg ml-5 lg:px-4">Save</button>
+        </div>
+        <div class="text-center">
+          <h2 class="mt-2 text-lg">Saving Amount: <span id="save-amount" class="font-bold">00</span></h2>
+        </div>
+        <div class="text-center">
+          <h2 class="mt-2 text-lg">Remaining Balance: <span id="remaining-balance" class="font-bold">00</span>
+          </h2>
+        </div>
+
+        <button id="invoice-btn"
+          class="bg-teal-500 hover:bg-teal-600 text-white rounded-lg shadow-lg mt-2 ml-5 lg:px-4 ">Invoice</button>
+
+        <!-- The Modal -->
+        <div id="invoiceModal"
+          class="fixed inset-0 bg-gray-500 bg-opacity-50 flex justify-center items-center transition duration-2000 hidden">
+          <div class="bg-white p-8 rounded-lg shadow-lg w-96 text-center">
+            <span onclick="closeModal('invoiceModal')"
+              class="absolute top-2 right-2 cursor-pointer text-2xl font-bold text-gray-600">&times;</span>
+            <h2 class="text-2xl font-semibold text-gray-800">Thank you!</h2>
+            <p class="text-gray-600 mt-2">Your invoice has been successfully submitted.</p>
+            <button onclick="closeModal('invoiceModal')"
+              class="mt-6 px-6 py-2 bg-green-500 text-white font-semibold rounded-lg shadow-lg hover:bg-green-400 transition duration-200">
+              Close
+            </button>
+          </div>
+        </div>
+        <div id="fieldModal"
+          class="fixed inset-0 bg-gray-500 bg-opacity-50 flex justify-center items-center transition duration-2000 hidden">
+          <div class="bg-white p-8 rounded-lg shadow-lg w-96 text-center">
+            <span onclick="closeModal('fieldModal')"
+              class="absolute top-2 right-2 cursor-pointer text-2xl font-bold text-gray-600">&times;</span>
+            <h2 class="text-2xl font-semibold text-gray-800">Warning!</h2>
+            <p class="text-gray-600 mt-2">You have to add values.</p>
+            <button onclick="closeModal('fieldModal')"
+              class="mt-6 px-6 py-2 bg-yellow-500 text-white font-semibold rounded-lg shadow-lg hover:bg-yellow-400 transition duration-200">
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Script File -->
+  <script src="script.js"></script>
+</body>
+
+</html>
