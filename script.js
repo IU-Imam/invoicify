@@ -144,11 +144,17 @@ invoice.addEventListener("click", () => {
       showModal("fieldModal");
     }, 500);
 
+    const downloadBtn = document
+      .getElementById("downloadBtn")
+      .classList.add("hidden");
     const inn = document.getElementById("inn").classList.add("hidden");
     const img = document.getElementById("img").classList.remove("hidden");
   } else if (income !== 0) {
     const inn = document.getElementById("inn").classList.remove("hidden");
     const img = document.getElementById("img").classList.add("hidden");
+    const downloadBtn = document
+      .getElementById("downloadBtn")
+      .classList.remove("hidden");
     delayedShowModal();
     // setTimeout(() => {
     //   showModal();
@@ -159,6 +165,13 @@ invoice.addEventListener("click", () => {
   changeInnerText("save-amount", "00");
   changeInnerText("remaining-balance", "00");
   console.log(expense_Items);
+
+  const downloadBtn = document.getElementById("downloadBtn");
+  downloadBtn.addEventListener("click", () => {
+    invoiceData = document.getElementById("inn");
+
+    html2pdf().from(invoiceData).save("invoice.pdf");
+  });
 
   // // Check income before executing delayedShowModal
   // if (income === 0) {
